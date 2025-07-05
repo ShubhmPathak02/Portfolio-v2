@@ -67,7 +67,7 @@ export default function GitHubClone() {
             className="bg-[#0d1117] border border-[#30363d] text-sm text-[#c9d1d9] px-2 py-1 rounded focus:outline-none"
           />
           <a
-            href="/images/Resume(1).pdf"
+            href="/images/R.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#238636] hover:bg-[#2ea043] text-sm px-3 py-1 rounded text-white"
