@@ -8,7 +8,7 @@ export default function PortfolioPage() {
       <h1 className="text-2xl font-bold text-[#58a6ff] mb-6 flex items-center">
         Portfolio Website
         <a
-          href="https://github.com/your-repo-link"
+          href="https://github.com/ShubhmPathak02/Portfolio-v2"
           target="_blank"
           rel="noopener noreferrer"
           className="ml-2 text-[#c9d1d9] hover:text-[#58a6ff]"
