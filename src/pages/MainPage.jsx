@@ -203,44 +203,49 @@ export default function GitHubClone() {
 
           {/* Pinned Projects */}
           <h2 className="font-medium text-[#c9d1d9] mb-2">Pinned Projects</h2>
+
           <div className="grid grid-cols-2 gap-4">
             {projects.map((proj) => (
-              <div
+              <Link
                 key={proj.name}
-                className="bg-[#0d1117] border border-[#30363d] rounded p-4 hover:shadow-[0_0_25px_5px_#58a6ff]"
+                to={proj.localLink}
+                className="bg-[#0d1117] border border-[#30363d] rounded p-4 hover:shadow-[0_0_25px_5px_#58a6ff] transition-transform hover:scale-105 cursor-pointer w-full min-w-[270px]"
               >
-                <Link
-                  to={proj.localLink}
-                  className="text-sm text-[#58a6ff] font-semibold hover:underline"
-                >
-                  {proj.name}
-                </Link>
-                <p className="text-xs text-[#8b949e] mt-1">{proj.desc}</p>
-                <div className="flex items-center text-xs text-[#8b949e] mt-2">
-                  <span
-                    className={`inline-block w-2 h-2 rounded-full mr-1 ${proj.color}`}
-                  ></span>
-                  <span>{proj.lang}</span>
-                  <div className="flex space-x-2 ml-auto">
-                    <span className="flex items-center space-x-1">
-                      <FaStar /> <span>{proj.stars}</span>
-                    </span>
-                    <span className="flex items-center space-x-1">
-                      <FaCodeBranch /> <span>{proj.forks}</span>
-                    </span>
-                    <a
-                      href={proj.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-blue-400"
-                    >
-                      <FaGithub />
-                    </a>
+                <div>
+                  <span className="text-sm text-[#58a6ff] font-semibold hover:underline">
+                    {proj.name}
+                  </span>
+                  <p className="text-xs text-[#8b949e] mt-1">{proj.desc}</p>
+
+                  <div className="flex items-center text-xs text-[#8b949e] mt-2">
+                    <span
+                      className={`inline-block w-2 h-2 rounded-full mr-1 ${proj.color}`}
+                    ></span>
+                    <span>{proj.lang}</span>
+
+                    <div className="flex space-x-2 ml-auto">
+                      <span className="flex items-center space-x-1">
+                        <FaStar /> <span>{proj.stars}</span>
+                      </span>
+                      <span className="flex items-center space-x-1">
+                        <FaCodeBranch /> <span>{proj.forks}</span>
+                      </span>
+                      <a
+                        href={proj.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()} // prevents opening local page when GitHub is clicked
+                        className="hover:text-blue-400"
+                      >
+                        <FaGithub />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+
           {/* ======= Education Section (ADDED) ======= */}
           <div>
             <h2 className="font-medium text-[#c9d1d9] mb-4 text-xl">
