@@ -8,6 +8,7 @@ import {
   FaMapMarkerAlt,
   FaStar,
   FaCodeBranch,
+  FaMicrochip,
 } from "react-icons/fa";
 import {
   SiHtml5,
@@ -16,6 +17,7 @@ import {
   SiReact,
   SiPython,
   SiC,
+  SiTailwindcss,
 } from "react-icons/si";
 
 export default function GitHubClone() {
@@ -96,6 +98,17 @@ export default function GitHubClone() {
             1 follower · 1 following
           </p>
 
+          <div className="flex justify-center">
+            <a
+              href="/images/R.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/5 hover:bg-white/10 text-white px-24 py-1.4 rounded border border-white/20 transition duration-200 mt-2"
+            >
+              Resume
+            </a>
+          </div>
+
           <div className="mt-4 space-y-2 text-sm">
             <div className="flex items-center space-x-2 text-[#8b949e]">
               <FaMapMarkerAlt className="text-[#8b949e]" />
@@ -137,8 +150,10 @@ export default function GitHubClone() {
             <div className="flex items-center space-x-2">
               <FaEnvelope className="text-[#8b949e]" />
               <a
-                href="mailto:pathakshubham020206@gmail.com"
+                href="mailto:24bec100@nith.ac.in"
                 className="hover:text-blue-400"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Email
               </a>
@@ -301,6 +316,14 @@ export default function GitHubClone() {
                   name: "JavaScript",
                 },
                 { icon: <SiReact className="text-[#61dafb]" />, name: "React" },
+                {
+                  icon: <SiTailwindcss className="text-[#38bdf8]" />,
+                  name: "Tailwind CSS",
+                },
+                {
+                  icon: <FaMicrochip className="text-[#8be9fd]" />,
+                  name: "PCB Designing",
+                },
               ].map((skill) => (
                 <div
                   key={skill.name}
