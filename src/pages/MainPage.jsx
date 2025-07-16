@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   FaGithub,
@@ -55,6 +56,105 @@ export default function GitHubClone() {
     },
   ];
 
+  // Animation variants for sidebar elements
+  const sidebarVariants = {
+    hidden: {
+      opacity: 0,
+      x: -100,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const socialLinkVariants = {
+    hidden: {
+      opacity: 0,
+      x: -50,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  // Animation variants for right side content
+  const rightSideVariants = {
+    hidden: {
+      opacity: 0,
+      x: 100,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const rightStaggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const projectVariants = {
+    hidden: {
+      opacity: 0,
+      x: 50,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const skillVariants = {
+    hidden: {
+      opacity: 0,
+      x: 30,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div className="bg-[#0d1117] min-h-screen text-white font-sans">
       {/* Navbar */}
@@ -81,24 +181,48 @@ export default function GitHubClone() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto mt-6 flex">
-        {/* Sidebar */}
-        <div className="w-1/3 px-4">
-          <img
+        {/* Sidebar with animations */}
+        <motion.div
+          className="w-1/3 px-4"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Profile Image */}
+          <motion.img
             src="/images/profile.jpg"
             alt="profile"
             className="rounded-full w-40 h-40 mx-auto mb-4 transition-transform hover:scale-105 hover:shadow-[0_0_25px_5px_#58a6ff]"
+            variants={sidebarVariants}
           />
-          <h1 className="text-xl font-semibold text-[#c9d1d9] text-center">
-            Shubham Pathak
-          </h1>
-          <p className="text-center text-[#8b949e]">
-            Web Developer | AI/ML | Robotics
-          </p>
-          <p className="text-center text-[#8b949e] mt-2 text-sm">
-            1 follower · 1 following
-          </p>
 
-          <div className="flex justify-center">
+          {/* Name and Bio */}
+          <motion.h1
+            className="text-xl font-semibold text-[#c9d1d9] text-center"
+            variants={sidebarVariants}
+          >
+            Shubham Pathak
+          </motion.h1>
+
+          <motion.p
+            className="text-center text-[#8b949e]"
+            variants={sidebarVariants}
+          >
+            Web Developer | AI/ML | Robotics
+          </motion.p>
+
+          <motion.p
+            className="text-center text-[#8b949e] mt-2 text-sm"
+            variants={sidebarVariants}
+          >
+            1 follower · 1 following
+          </motion.p>
+
+          {/* Resume Button */}
+          <motion.div
+            className="flex justify-center"
+            variants={sidebarVariants}
+          >
             <a
               href="/images/R.pdf"
               target="_blank"
@@ -107,14 +231,25 @@ export default function GitHubClone() {
             >
               Resume
             </a>
-          </div>
+          </motion.div>
 
-          <div className="mt-4 space-y-2 text-sm">
-            <div className="flex items-center space-x-2 text-[#8b949e]">
+          {/* Social Links */}
+          <motion.div
+            className="mt-4 space-y-2 text-sm"
+            variants={staggerContainer}
+          >
+            <motion.div
+              className="flex items-center space-x-2 text-[#8b949e]"
+              variants={socialLinkVariants}
+            >
               <FaMapMarkerAlt className="text-[#8b949e]" />
               <span>Ghaziabad, Uttar Pradesh</span>
-            </div>
-            <div className="flex items-center space-x-2">
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-2"
+              variants={socialLinkVariants}
+            >
               <FaGithub className="text-[#8b949e]" />
               <a
                 href="https://github.com/ShubhmPathak02"
@@ -124,8 +259,12 @@ export default function GitHubClone() {
               >
                 GitHub
               </a>
-            </div>
-            <div className="flex items-center space-x-2">
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-2"
+              variants={socialLinkVariants}
+            >
               <FaInstagram className="text-[#8b949e]" />
               <a
                 href="https://www.instagram.com/whoisshubhamm_?igsh=ZzRzb2F2Nmpsampr"
@@ -135,8 +274,12 @@ export default function GitHubClone() {
               >
                 Instagram
               </a>
-            </div>
-            <div className="flex items-center space-x-2">
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-2"
+              variants={socialLinkVariants}
+            >
               <FaLinkedin className="text-[#8b949e]" />
               <a
                 href="https://www.linkedin.com/in/shubham-pathak-41b4a732b"
@@ -146,8 +289,12 @@ export default function GitHubClone() {
               >
                 LinkedIn
               </a>
-            </div>
-            <div className="flex items-center space-x-2">
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-2"
+              variants={socialLinkVariants}
+            >
               <FaEnvelope className="text-[#8b949e]" />
               <a
                 href="mailto:24bec100@nith.ac.in"
@@ -157,17 +304,19 @@ export default function GitHubClone() {
               >
                 Email
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="mt-6">
+          {/* Achievements */}
+          <motion.div className="mt-6" variants={sidebarVariants}>
             <h2 className="font-medium text-[#58a6ff] mb-2">Achievements</h2>
             <ul className="mt-1 text-sm text-[#8b949e] space-y-1">
               <li>🏆 Won Roboquest 2.0</li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="mt-6">
+          {/* Organizations */}
+          <motion.div className="mt-6" variants={sidebarVariants}>
             <h2 className="font-medium text-[#58a6ff] mb-2">Organizations</h2>
             <a
               href="https://www.robosocnith.in/"
@@ -180,13 +329,21 @@ export default function GitHubClone() {
                 className="w-12 h-12 mt-2 hover:shadow-[0_0_15px_2px_#58a6ff]"
               />
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Main Section */}
-        <div className="w-2/3 space-y-6 px-4">
+        {/* Main Section with animations */}
+        <motion.div
+          className="w-2/3 space-y-6 px-4"
+          variants={rightStaggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
           {/* README Section */}
-          <div className="bg-[#0d1117] border border-[#30363d] rounded p-4 hover:shadow-[0_0_25px_5px_#58a6ff]">
+          <motion.div
+            className="bg-[#0d1117] border border-[#30363d] rounded p-4 hover:shadow-[0_0_25px_5px_#58a6ff]"
+            variants={rightSideVariants}
+          >
             <h2 className="font-medium text-[#58a6ff] ">README.md</h2>
             <div className="space-y-2 text-[#8b949e] text-sm">
               <p>
@@ -214,17 +371,27 @@ export default function GitHubClone() {
                 share knowledge with the community.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Pinned Projects */}
-          <h2 className="font-medium text-[#c9d1d9] mb-2">Pinned Projects</h2>
+          <motion.h2
+            className="font-medium text-[#c9d1d9] mb-2"
+            variants={rightSideVariants}
+          >
+            Pinned Projects
+          </motion.h2>
 
-          <div className="grid grid-cols-2 gap-4">
-            {projects.map((proj) => (
-              <Link
+          <motion.div
+            className="grid grid-cols-2 gap-4"
+            variants={rightStaggerContainer}
+          >
+            {projects.map((proj, index) => (
+              <motion.a
                 key={proj.name}
-                to={proj.localLink}
-                className="bg-[#0d1117] border border-[#30363d] rounded p-4 hover:shadow-[0_0_25px_5px_#58a6ff] transition-transform hover:scale-105 cursor-pointer w-full min-w-[270px]"
+                href={proj.localLink}
+                className="bg-[#0d1117] border border-[#30363d] rounded p-4 hover:shadow-[0_0_25px_5px_#58a6ff] transition-transform hover:scale-105 cursor-pointer w-full min-w-[270px] block"
+                variants={projectVariants}
+                custom={index}
               >
                 <div>
                   <span className="text-sm text-[#58a6ff] font-semibold hover:underline">
@@ -249,7 +416,7 @@ export default function GitHubClone() {
                         href={proj.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()} // prevents opening local page when GitHub is clicked
+                        onClick={(e) => e.stopPropagation()}
                         className="hover:text-blue-400"
                       >
                         <FaGithub />
@@ -257,12 +424,12 @@ export default function GitHubClone() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
 
-          {/* ======= Education Section (ADDED) ======= */}
-          <div>
+          {/* Education Section */}
+          <motion.div variants={rightSideVariants}>
             <h2 className="font-medium text-[#c9d1d9] mb-4 text-xl">
               Education
             </h2>
@@ -301,13 +468,15 @@ export default function GitHubClone() {
                 <p className="text-[#8b949e] text-xs mb-2">Percentage: 92.8%</p>
               </div>
             </div>
-          </div>
-          {/* ======= End Education Section ======= */}
+          </motion.div>
 
-          {/* Existing Skills Section */}
-          <div>
+          {/* Skills Section */}
+          <motion.div variants={rightSideVariants}>
             <h2 className="font-medium text-[#c9d1d9] mb-2">Skills</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+              variants={rightStaggerContainer}
+            >
               {[
                 { icon: <SiHtml5 className="text-[#e34c26]" />, name: "HTML5" },
                 { icon: <SiCss3 className="text-[#1572b6]" />, name: "CSS3" },
@@ -325,21 +494,25 @@ export default function GitHubClone() {
                   name: "PCB Designing",
                 },
               ].map((skill) => (
-                <div
+                <motion.div
                   key={skill.name}
                   className="bg-[#0d1117] border border-[#30363d] rounded p-4 flex flex-col items-center hover:shadow-[0_0_20px_4px_#58a6ff]"
+                  variants={skillVariants}
                 >
                   <div className="text-3xl mb-2">{skill.icon}</div>
                   <p className="text-sm text-[#c9d1d9]">{skill.name}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Existing Languages Section */}
-          <div>
+          {/* Languages Section */}
+          <motion.div variants={rightSideVariants}>
             <h2 className="font-medium text-[#c9d1d9] mb-2">Languages</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+              variants={rightStaggerContainer}
+            >
               {[
                 { icon: <SiC className="text-[#555555]" />, name: "C" },
                 {
@@ -347,17 +520,18 @@ export default function GitHubClone() {
                   name: "Python",
                 },
               ].map((skill) => (
-                <div
+                <motion.div
                   key={skill.name}
                   className="bg-[#0d1117] border border-[#30363d] rounded p-4 flex flex-col items-center hover:shadow-[0_0_20px_4px_#58a6ff]"
+                  variants={skillVariants}
                 >
                   <div className="text-3xl mb-2">{skill.icon}</div>
                   <p className="text-sm text-[#c9d1d9]">{skill.name}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Footer */}
